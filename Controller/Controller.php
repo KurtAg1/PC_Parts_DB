@@ -38,6 +38,11 @@ class Controller
             $this->model->addItem($_POST['name'], $_POST['description'], $_POST['categoryId'], $_POST['statusId'], $_POST['locationId']);
             $items = $this->model->getItemList();
             include 'View/itemList.php';
+        } else if (isset($_GET['deleteItem'])) {
+            // User wants to delete an item
+            $this->model->deleteItem($_GET['deleteItem']);
+            $items = $this->model->getItemList();
+            include 'View/itemList.php';
         } else if (isset($_GET['logout'])) {
             // Log the user out
             session_destroy();

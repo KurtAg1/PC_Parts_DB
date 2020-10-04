@@ -24,7 +24,7 @@
       echo "<td>$item->status</td>";
       echo "<td>$item->location</td>";
       if (isset($_SESSION['adminUser'])) {
-        echo "<td><a class='btn btn-primary'>Edit</a> <a class='btn btn-danger'>Delete</a></td>";
+        echo "<td><a class='btn btn-primary'>Edit</a> <a href='index.php?deleteItem=$item->id' class='btn btn-danger'>Delete</a></td>";
       }
       echo "</tr>";
     }

@@ -1,3 +1,10 @@
+<?php
+$categoryList = $this->model->getCategoryList();
+$statusList = $this->model->getStatusList();
+$locationList = $this->model->getLocationList();
+
+?>
+
 <h2>Add Item</h2>
 <form name="addItem" id="addItem" action="index.php?addItem" method="POST" role="form">
   <div class="form-group">
@@ -12,24 +19,33 @@
     <div class="form-group col-md-4">
       <label for="categoryId">Category</label>
       <select name="categoryId" class="form-control">
-        <option value='1'>CPU</option>
-        <option value='2'>GPU</option>
+        <?php
+        foreach ($categoryList as $category) {
+          echo "<option value='$category->id'>$category->category</option>";
+        }
+        ?>
       </select>
     </div>
 
     <div class="form-group col-md-4">
       <label for="statusId">Status</label>
       <select name="statusId" class="form-control">
-        <option value='1'>In Use</option>
-        <option value='2'>Not Tested</option>
+        <?php
+        foreach ($statusList as $status) {
+          echo "<option value='$status->id'>$status->status</option>";
+        }
+        ?>
       </select>
     </div>
 
     <div class="form-group col-md-4">
       <label for="locationId">Location</label>
       <select name="locationId" class="form-control">
-        <option value='1'>Main PC</option>
-        <option value='2'>Server PC</option>
+        <?php
+        foreach ($locationList as $location) {
+          echo "<option value='$location->id'>$location->location</option>";
+        }
+        ?>
       </select>
     </div>
   </div>
